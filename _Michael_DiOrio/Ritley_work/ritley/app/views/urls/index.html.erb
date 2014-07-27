@@ -1,0 +1,23 @@
+<h1>first app</h1>
+
+<%=link_to "Generate link", new_url_path%>
+
+<h1>Listing articles</h1>
+
+ 
+<table>
+  <tr>
+    <td><b>Link</td>
+    <td><b>Code</td>
+    <td><b>Show</td>
+    <td><b>Edit</td>
+  </tr>
+ 
+  <% @urls.each do |t| %>
+      <td><%= "#{@count}" %> <%= t.link %></td><% @count +=1%>
+      <td><%= t.code %>
+      <td><%= link_to 'Show', url_path(t.id) %></td>
+      <td><%= link_to 'Edit', edit_url_path(t.id) %></td>
+    </tr>
+  <% end %>
+</table>
