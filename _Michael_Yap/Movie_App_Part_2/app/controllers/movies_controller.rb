@@ -5,6 +5,12 @@ class MoviesController < ApplicationController
   	# The plural makes sense here because it contains all movies.
   end
 
+  def new
+  	# Required for checking the result of @movie.save
+  	# Otherwise @movie would be nil in the view, and calling movie.erros.any? would throw an error
+  	@movie = Movie.new
+  end
+
   def edit
   	@movie = Movie.find(params[:id])
   end
@@ -23,6 +29,20 @@ class MoviesController < ApplicationController
   end
 
   def create
+
+  	# render plain: params[:movie].inspect
+  	# The render method is taking a very simple hash with the key of plain and the value of params[:movie].inspect
+
+  	@movie = Movie.new(movie_params)
+
+  	# Check the result of @movie.save
+  	if @movie.save
+  		redirect_to @movie
+  	else 
+  		render "new"
+  		# If @movie.save returns false, show the form back to the user
+  	end
+
   end
 
 
@@ -32,7 +52,7 @@ class MoviesController < ApplicationController
 
   private
   	def movie_params
-  		params.require(:movie).permit(:title, :description)
+  		params.require(:movie).permit(:title, :description, :year_released)
   	end
 
 end
