@@ -1,8 +1,7 @@
 class MoviesController < ApplicationController
   def index
-  	@movies = Movie.all
-  	# Watch how you pluralizes instance variables.
-  	# The plural makes sense here because it contains all movies.
+  	@movie_search = Movie.search_for(params[:q])
+  	# Is there a way to only show results if a search has been performed?
   end
 
   def new
