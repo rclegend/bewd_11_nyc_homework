@@ -689,7 +689,7 @@
 <span id="L38" rel="#L38">38</span>
 
            </td>
-           <td class="blob-line-code"><div class="code-body highlight"><pre><div class='line' id='LC1'><span class="c1">###############################################################################</span></div><div class='line' id='LC2'><span class="c1">#</span></div><div class='line' id='LC3'><span class="c1"># Back-End Web Development - Homework #1</span></div><div class='line' id='LC4'><span class="c1">#</span></div><div class='line' id='LC5'><span class="c1"># Secret Number is a game you will build in two parts.</span></div><div class='line' id='LC6'><span class="c1"># The purpose of the game is to have players guess a secret number from 1-10.</span></div><div class='line' id='LC7'><span class="c1">#</span></div><div class='line' id='LC8'><span class="c1"># Read the instructions below.</span></div><div class='line' id='LC9'><span class="c1"># This exercise will test your knowledge of Variables and Conditionals.</span></div><div class='line' id='LC10'><span class="c1">#</span></div><div class='line' id='LC11'><span class="c1">###############################################################################</span></div><div class='line' id='LC12'><span class="c1">#</span></div><div class='line' id='LC13'><span class="c1"># We&#39;re ready to program! To practice our Ruby skills lets create a secret number game. </span></div><div class='line' id='LC14'><span class="c1"># In this game players have three tries to guess a secret number between 1 and 10. </span></div><div class='line' id='LC15'><span class="c1">#</span></div><div class='line' id='LC16'><span class="c1"># Here are some guidelines to building your game:</span></div><div class='line' id='LC17'><span class="c1">#</span></div><div class='line' id='LC18'><span class="c1">#	Intros</span></div><div class='line' id='LC19'><span class="c1"># 	-	Welcome the player to your game. Let them know who created the game. </span></div><div class='line' id='LC20'><span class="c1">#	  -	Ask for the player&#39;s name then personally greet them by printing to the screen, &quot;Hi player_name!&quot;</span></div><div class='line' id='LC21'><span class="c1">#	  -	Any good game will communicate the rules. Let the player know they must guess a number between 1 and 10 </span></div><div class='line' id='LC22'><span class="c1">#		and that they only have 3 tries to do so.</span></div><div class='line' id='LC23'><span class="c1">#</span></div><div class='line' id='LC24'><span class="c1">#	Functionality: </span></div><div class='line' id='LC25'><span class="c1">#	 -	Hard code the secret number. Make it a random number between 1 and 10.</span></div><div class='line' id='LC26'><span class="c1">#	 - 	Ask the user for their guess.</span></div><div class='line' id='LC27'><span class="c1">#	 -	Verify if they were correct. If the player guesses correctly they win the game they should be congratulated and the game should end.</span></div><div class='line' id='LC28'><span class="c1">#	 -	If they guess incorrectly, give the player some direction. If they guess too high let them know, if they guess too low, let them know.</span></div><div class='line' id='LC29'><span class="c1">#	 - 	Don&#39;t forget to let your players know how many guesses they have left. Your game should say something like</span></div><div class='line' id='LC30'><span class="c1">#		  &quot;You have X many guesses before the game is over enter a another number&quot;</span></div><div class='line' id='LC31'><span class="c1">#	 -	If they don&#39;t guess correctly after 3 tries, print that the Player lost and the game is over. Also let them know what the `secret_number` was.</span></div><div class='line' id='LC32'><span class="c1">#</span></div><div class='line' id='LC33'><span class="c1"># Make sure to add helpful comments to your code to document what each section does.</span></div><div class='line' id='LC34'><span class="c1"># </span></div><div class='line' id='LC35'><span class="c1"># Remember to cast input from the Player into the appropriate data type.</span></div><div class='line' id='LC36'><span class="c1">#</span></div><div class='line' id='LC37'><span class="c1">###############################################################################</span></div><div class='line' id='LC38'><br/></div></pre></div></td>
+           <td class="blob-line-code"><div class="code-body highlight"><pre><div class='line' id='LC1'><span class="c1">###############################################################################</span></div><div class='line' id='LC2'><span class="c1">#</span></div><div class='line' id='LC3'><span class="c1"># Back-End Web Development - Homework #1</span></div><div class='line' id='LC4'><span class="c1">#</span></div><div class='line' id='LC5'><span class="c1"># Secret Number is a game you will build in two parts.</span></div><div class='line' id='LC6'><span class="c1"># The purpose of the game is to have players guess a secret number from 1-10.</span></div><div class='line' id='LC7'><span class="c1">#</span></div><div class='line' id='LC8'><span class="c1"># Read the instructions below.</span></div><div class='line' id='LC9'><span class="c1"># This exercise will test your knowledge of Variables and Conditionals.</span></div><div class='line' id='LC10'><span class="c1">#</span></div><div class='line' id='LC11'><span class="c1">###############################################################################</span></div><div class='line' id='LC12'><span class="c1">#</span></div><div class='line' id='LC13'><span class="c1"># We&#39;re ready to program! To practice our Ruby skills lets create a secret number game. </span></div><div class='line' id='LC14'><span class="c1"># In this game players have three tries to guess a secret number between 1 and 10. </span></div><div class='line' id='LC15'><span class="c1">#</span></div><div class='line' id='LC16'><span class="c1"># Here are some guidelines to building your game:</span></div><div class='line' id='LC17'><span class="c1">#</span></div><div class='line' id='LC18'><span class="c1">#  Intros</span></div><div class='line' id='LC19'><span class="c1">#   - Welcome the player to your game. Let them know who created the game. </span></div><div class='line' id='LC20'><span class="c1">#    - Ask for the player&#39;s name then personally greet them by printing to the screen, &quot;Hi player_name!&quot;</span></div><div class='line' id='LC21'><span class="c1">#    - Any good game will communicate the rules. Let the player know they must guess a number between 1 and 10 </span></div><div class='line' id='LC22'><span class="c1">#   and that they only have 3 tries to do so.</span></div><div class='line' id='LC23'><span class="c1">#</span></div><div class='line' id='LC24'><span class="c1"># Functionality: </span></div><div class='line' id='LC25'><span class="c1">#   -  Hard code the secret number. Make it a random number between 1 and 10.</span></div><div class='line' id='LC26'><span class="c1">#  -  Ask the user for their guess.</span></div><div class='line' id='LC27'><span class="c1">#   -  Verify if they were correct. If the player guesses correctly they win the game they should be congratulated and the game should end.</span></div><div class='line' id='LC28'><span class="c1">#  -  If they guess incorrectly, give the player some direction. If they guess too high let them know, if they guess too low, let them know.</span></div><div class='line' id='LC29'><span class="c1">#  -  Don&#39;t forget to let your players know how many guesses they have left. Your game should say something like</span></div><div class='line' id='LC30'><span class="c1">#     &quot;You have X many guesses before the game is over enter a another number&quot;</span></div><div class='line' id='LC31'><span class="c1">#  -  If they don&#39;t guess correctly after 3 tries, print that the Player lost and the game is over. Also let them know what the `secret_number` was.</span></div><div class='line' id='LC32'><span class="c1">#</span></div><div class='line' id='LC33'><span class="c1"># Make sure to add helpful comments to your code to document what each section does.</span></div><div class='line' id='LC34'><span class="c1"># </span></div><div class='line' id='LC35'><span class="c1"># Remember to cast input from the Player into the appropriate data type.</span></div><div class='line' id='LC36'><span class="c1">#</span></div><div class='line' id='LC37'><span class="c1">###############################################################################</span></div><div class='line' id='LC38'><br/></div></pre></div></td>
          </tr>
        </table>
   </div>
@@ -776,3 +776,245 @@
   </body>
 </html>
 
+#Define the secret number
+@secret_number = 3
+
+#Get user input
+def get_user_input
+  return gets.chomp.to_s
+end
+
+#return user guess to integer
+def get_guess
+  return gets.chomp.to_i
+end
+
+#get user's guess
+def guess_prompt
+  puts "Enter your guess:"
+end
+
+#checks the player's first guess 
+def check_first_guess
+  if @first_guess < @secret_number
+    puts "You guessed too low! You have two tries left."
+  elsif @first_guess > @secret_number
+    puts "You guessed too high! You have two tries left."
+  else
+    puts "Congratulations! You win!"
+    Process.exit(0)
+end
+end
+
+#checks the player's second guess
+def check_second_guess
+  if @second_guess < @secret_number
+    puts "You guessed too low! You have one try left."
+  elsif @second_guess > @secret_number
+    puts "You guessed too high! You have one try left."
+  else
+    puts "Congratulations! You win!"
+    Process.exit(0)
+end
+end
+
+#checks the player's third guess
+def check_third_guess
+  if @third_guess < @secret_number
+    puts "You guessed too low! You lose. The secret number was #{@secret_number}."
+  elsif @third_guess > @secret_number
+    puts "You guessed too high! You lose. The secret number was #{@secret_number}."
+  else
+    puts "Congratulations! You win!"
+end
+end
+
+#Actual flow of the game
+puts "Welcome to Patrick's secret number guessing game!"
+puts "What's your name?"
+user_name = get_user_input
+puts "Hi #{user_name}!"
+puts "Here's how this game works. You get three chances to guess the secret number, which is between 0 and 10."
+#getting and checking first guess 
+guess_prompt
+@first_guess = get_guess
+check_first_guess
+#getting and checking second guess
+guess_prompt
+@second_guess = get_guess
+check_second_guess
+#getting and checking third guess
+guess_prompt
+@third_guess = get_guess
+check_third_guess
+
+
+
+
+
+
+
+
+
+
+def get_input
+  return gets.chomp
+end
+
+secret_number = 7
+
+puts "Welcome to this secret number game thing by me, Christine! What's your name?"
+player_name = get_input
+puts "Hi #{player_name}! What number am I thinking of? You have three guesses."
+
+3.downto(1) do |turn|
+
+  guess = get_input
+
+  if guess.to_i != secret_number
+    if turn == 3
+      puts "Nope! Try again. You have two tries left."
+    end
+    
+    if turn == 2
+      puts "Nope! Try again. You have one try left."
+    end
+    
+    if turn == 1
+      puts "Nope! Sorry. You lose. Game over."
+    end
+
+  else 
+    puts "You did it! You're psychic! Game over."
+    break
+  end
+end
+
+
+
+
+
+puts "Hello player, I created this game!"
+puts "Please give me your name?" 
+name = gets.chomp
+
+puts "Hello, " + name + " . "
+
+puts "these are the rules of the game: \n Please pick a number between 1-10 \n You will have 3 tries to do so"
+
+# Functionality: 
+#  -  Hard code the secret number. Make it a random number between 1 and 10.
+  secret_number = 4
+  counter = 3
+  while 
+    counter != 0
+
+#  -  Ask the user for their guess.
+    puts "Please give me your guess!"
+    guess = gets.chomp
+#  -  Verify if they were correct. If the player guesses correctly they win the game they should be congratulated and the game should end.
+    if guess == secret_number
+      puts "You guessed correctly! Yay! :)"
+    else
+      counter -= 1
+      puts "You did not guess correctly! :("
+      puts "You have #{counter} guesses left!"
+  #  -  If they guess incorrectly, give the player some direction. If they guess too high let them know, if they guess too low, let them know.
+    end
+  end
+
+
+def get_input
+  input=gets.chomp
+end
+
+#INTRO
+def welcome()
+  puts "Welcome to Kelly's guessing game!"
+  puts "What is your name?"
+  name = get_input
+  puts "Hi #{name}!"
+  puts "Here are the rules: guess a number I am thinking of between 1-10, you have three guesses. Good luck!"
+end
+
+def random_number()
+  secret_number = (10>1) ? 1+rand((10-1+1)) : 10+rand((1-10+1))
+  return secret_number
+end
+
+#Guess Response
+def guess_response(secret_number, guess)
+  if guess > secret_number
+    return "Too high!"
+  elsif guess < secret_number
+    return "Too low!"
+  else
+    return "You win! Thank you for playing!"
+  end
+  return answer
+end
+
+#RUN METHODS
+welcome
+secret_number=random_number
+#for testing: puts "#{secret_number}" 
+attempts=0
+while (attempts<3) 
+  puts "Enter your guess now. You have #{(3-attempts).to_s} guesses left."  
+  guess=get_input.to_i
+  if guess>0 && guess<=10
+    answer=guess_response(secret_number, guess)
+    puts answer
+    if answer=="You win! Thank you for playing!"
+      attempts=10
+    end
+  attempts = attempts+1
+  end
+end
+
+<<<<<<< HEAD
+
+  def game
+
+  puts "Welcome Player! Mike D created this game!"
+  puts "What is your name so I don't have to call you player?"
+  name= gets.chomp
+  puts "Hi #{name}!"
+  puts "Just so you are aware #{name} you must guess a number between 1 and 10 and you will only have THREE tries"
+
+  count =3
+  special_number = 3
+
+  while count !=0
+    puts "So #{name} what is your guess?"
+    player_answer = gets.to_i
+
+    if (player_answer != special_number) && (count !=1)
+      count -=1
+        if (player_answer) > (special_number)
+          puts "You guessed too high!"
+        else
+          puts "You guessed too low!"
+        end
+
+      puts "Guess again..you only have #{count} guesses left"
+
+    elsif (player_answer != special_number) && (count == 1)
+      puts "You lost!!"
+      puts "The secret number was #{special_number}"
+      return
+    else
+      puts "congrats!"
+    end
+  end
+end
+
+game
+
+
+=======
+if (attempts == 3) && answer=="Too low!" or answer=="Too high!"
+  puts "Game over! The answer was #{secret_number}. Better luck next time!"
+end
+git 
+>>>>>>> 9cdec5c3c790921c25bf5f95108c010460f11ef2
