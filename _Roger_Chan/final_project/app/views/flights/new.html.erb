@@ -1,0 +1,18 @@
+<%= form_for @flight do |f| %>
+  <fieldset>
+    <legend>Flights</legend>
+    <div>
+      <%= f.label :flight_number %>
+      <%= f.text_field :flight_number %>
+    </div>
+    <div>
+      <%= f.label :departure_date %>
+      <%= f.date_field :departure_date %>
+    </div>
+    <div>
+      <%= f.label :departure_airport_code %>
+      <%= f.text_field :departure_airport_code %>
+    </div>
+  </fieldset>
+  <%= f.submit %>
+<% end %>

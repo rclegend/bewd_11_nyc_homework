@@ -1,0 +1,8 @@
+Flight: <%= @flight.flight_number %></br>
+Departure Date: <%= @flight.departure_date %></br>
+Departure Airport: <%= @flight.departure_airport_code %></br>
+Created by: <%= @flight.user.email if @flight.user.present?%>
+
+<p><%= link_to "Edit Flight", edit_flight_path %></p>
+
+<%= render '/./welcome/directions'%>

@@ -1,0 +1,7 @@
+<h2>All flights for <strong><%= current_user.email %></strong> </h2>
+<% @flights.each_with_index do |flight, index| %>
+   <%= link_to 'Show Flight', flight_path(flight.id)%>
+   Flight number: <%= flight.flight_number %> </br>
+   Departure Date: <%= flight.departure_date %> </br>
+   Departure Airport: <%= flight.departure_airport_code %> </br></br>
+<% end %>
