@@ -1,7 +1,13 @@
-<h2>All flights for <strong><%= current_user.email %></strong> </h2>
-<% @flights.each_with_index do |flight, index| %>
-   <%= link_to 'Show Flight', flight_path(flight.id)%>
-   Flight number: <%= flight.flight_number %> </br>
-   Departure Date: <%= flight.departure_date %> </br>
-   Departure Airport: <%= flight.departure_airport_code %> </br></br>
-<% end %>
+<h3>All flights for <strong><%= current_user.email %></strong> </h3>
+<div class="list-group">
+	<% @flights.each_with_index do |flight, index| %>
+		<div><a href="<%= flight_path(flight.id)  %>" class="list-group-item">
+			<h4 class="list-group-item-heading">Flight: <%= flight.flight_number %></h4>
+			<p class="list-group-item-text">Departure Date: <%= flight.departure_date %></p>
+			<p class="list-group-item-text">Departure Airport: <%= flight.departure_airport_code %></p>
+			<%= link_to "Edit Flight", edit_flight_path(flight.id) %>
+		</a></div></br>
+	<% end %>
+</div>
+
+<p><%= link_to "Add New Flight", new_flight_path %></p>

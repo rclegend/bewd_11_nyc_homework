@@ -1,46 +1,47 @@
-<p>Enter your flight details</p>
-  <%= form_tag '/welcome', method: 'get' do %>
+  <%= form_tag '/welcome', method: :get, :class => "form-inline" do %>
+
+
 	  <%= label_tag(:flight_number, "Flight number:") %>
 	  <% if @flight.nil?%>
-	  	<%= text_field_tag(:flight_number) %><br/>
+	  	<div><%= text_field_tag(:flight_number) %><br/></div>
 	  <% else %>
-	  	<%= text_field_tag(:flight_number, @flight.flight_number) %><br/>
+	  	<div><%= text_field_tag(:flight_number, @flight.flight_number) %><br/></div>
 	  <% end %>
-	  <%= label_tag(:date) %><br/>
+	  <%= label_tag(:date) %>
 	  <% if @flight.nil?%>
-	  	<%= date_field_tag(:date) %><br/>
+	  	<div><%= date_field_tag(:date) %><br/></div>
 	  <% else %>
-	  	<%= date_field_tag(:date, @flight.departure_date) %><br/>
+	  	<div><%= date_field_tag(:date, @flight.departure_date) %><br/></div>
 	  <% end %>
 	  <%= label_tag(:departure_airport_code, "Departure Airport Name (IATA):") %>
 	  <% if @flight.nil?%>
-	  	<%= text_field_tag(:departure_airport_code) %><br/>
+	  	<div><%= text_field_tag(:departure_airport_code) %><br/></div>
 	  <% else %>
-	  	<%= text_field_tag(:departure_airport_code, @flight.departure_airport_code) %><br/>
+	  	<div><%= text_field_tag(:departure_airport_code, @flight.departure_airport_code) %><br/></div>
 	  <% end %>
 	  <%= label_tag(:risk_profile, "Risk Profile:") %>
 	  <% if user_signed_in?%>
-	  	<%= select_tag :risk_profile, options_for_select([ "High", "Medium", "Low"], current_user.risk_profile)%><br/>
+	  	<div><%= select_tag :risk_profile, options_for_select([ "High", "Medium", "Low"], current_user.risk_profile)%><br/></div>
 	  <% else %>
-	  	<%= select_tag(:risk_profile,"<option>High</option><option>Medium</option><option>Low</option>".html_safe) %><br/>
+	  	<div><%= select_tag(:risk_profile,"<option>High</option><option>Medium</option><option>Low</option>".html_safe) %><br/></div>
 	  <% end %>
 	  <%= label_tag(:origin_location, "Where will you leave from?") %>
 	  <% if @flight.nil?%>
-	  	<%= text_field_tag(:origin_location, @current_location) %><br/>
+	  	<div><%= text_field_tag(:origin_location, @current_location) %><br/></div>
 	  <% else %>
-	  	<%= text_field_tag(:origin_location, current_user.home_address) %><br/>
+	  	<div><%= text_field_tag(:origin_location, current_user.home_address) %><br/></div>
 	  <% end %>
 	  <%= label_tag(:commute_mode, "Commute Mode:") %>
 	  <%= select_tag(:commute_mode,"<option>Public Transit</option><option>Driving</option><option>Walking</option>".html_safe) %><br/>
 	  <%= label_tag(:baggage_to_checkin, "Do you have baggage to check-in?") %>
 	  <%= check_box_tag(:baggage_to_checkin,"Yes",false) %><br/><br/>
-  <%= submit_tag("Submit") %>
+  <%= submit_tag("Submit", class: "btn btn-default") %>
 <%end%>
 <br/>
 
 <!-- Display directions only if there is a flight status available -->
 <% if @has_flightstatus_error %>
-	<%= @flightstatus_error_msg %>
+	<!-- <%= @flightstatus_error_msg %> -->
 
 <% else %>
 	<!-- Display map only if Google Directions finds a result -->
@@ -66,6 +67,6 @@
 		</ol>
 	<%else%>
 		<!-- Otherwise -->
-		<p> <%= @directions_error_msg %></p>
+		<p> <!-- <%= @directions_error_msg %></p>-->
 	<%end%>
 <%end%>

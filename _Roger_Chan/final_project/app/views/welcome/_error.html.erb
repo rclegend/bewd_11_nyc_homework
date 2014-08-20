@@ -1,0 +1,13 @@
+<% if @has_flightstatus_error %>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<strong>ERROR!</strong> <%= @flightstatus_error_msg %>
+	</div>
+<% end %>
+  
+<% if @has_directions_error %>
+	<div class="alert alert-danger alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<strong>ERROR!</strong> <%= @directions_error_msg %>
+	</div>
+<% end %>

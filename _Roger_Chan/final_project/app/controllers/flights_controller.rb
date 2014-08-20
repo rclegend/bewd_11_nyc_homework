@@ -30,5 +30,6 @@ class FlightsController < ApplicationController
 
   def show
     @flight = Flight.find params[:id]
+    @flight_date = Date.parse(@flight.departure_date.to_s)
   end
 end
