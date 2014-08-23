@@ -4,32 +4,24 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   	# Initialize
-	require 'json'
-	require 'rest-client'
-	require 'date'
-	require "erb"
-	include ERB::Util
+  	require 'json'
+  	require 'rest-client'
+  	require 'date'
+  	require "erb"
+  	include ERB::Util
 
-	def index
-		# Get current location
-		get_current_location
-
-		# Load the flight data using parameters
-		if is_params_ready
-			load_flight_data
-			get_directions(@commute_mode,@arrival_time,@origin_location,@departure_airport_name)
-		end
-	end
+  	def index
+  	end
 
   	def is_params_ready
-		if params[:flight_number]==nil || params[:date]==nil || params[:risk_profile]==nil || params[:departure_airport_code]==nil || params[:origin_location]==nil
-			return false
-		else
-			return true
-		end
-	end
+  		if params[:flight_number]=="" || params[:date]=="" || params[:risk_profile]==nil || params[:departure_airport_code]=="" || params[:origin_location]==nil
+  			return false
+  		else
+  			return true
+  		end
+  	end
 
-	def load_flight_data
+  	def load_flight_data
 		# Error flags
 		@has_flightstatus_error = false
 		@flightstatus_error_msg = ""
@@ -85,9 +77,9 @@ class ApplicationController < ActionController::Base
 			@has_flightstatus_error = true
 		elsif flightstats_json["flightStatuses"].empty?
 		# Check if flight status is available
-			@flightstatus_error_msg = "Flight Status Not Available"
-			@has_flightstatus_error = true
-		else
+		@flightstatus_error_msg = "Flight Status Not Available"
+		@has_flightstatus_error = true
+	else
 			# No problems - continue on
 			# Return the departure airport name (or address)
 			departure_airport_code = flightstats_json["flightStatuses"].first["departureAirportFsCode"]
@@ -122,6 +114,24 @@ class ApplicationController < ActionController::Base
 			# - Cancelled (C) - The flight was cancelled.
 			# - Not Operational (NO) - The flight appears to be from an outdated schedule or flight plan – meaning that when we queried the airline, it returned that the flight is not scheduled.
 			@departure_flight_status = flightstats_json["flightStatuses"].first["status"]
+			case flightstats_json["flightStatuses"].first["status"]
+			when 'S'
+			  @departure_flight_status = "<span class=\"label label-success\">Scheduled</span>"
+			when 'A'
+			  @departure_flight_status = "<span class=\"label label-success\">Active</span>"
+			when 'U'
+			  @departure_flight_status = "<span class=\"label label-warning\">Unknown</span>"
+			when 'R'
+			  @departure_flight_status = "<span class=\"label label-warning\">Redirected</span>"
+			when 'L'
+			  @departure_flight_status = "<span class=\"label label-success\">Landed</span>"
+			when 'D'
+			  @departure_flight_status = "<span class=\"label label-warning\">Diverted</span>"
+			when 'C'
+			  @departure_flight_status = "<span class=\"label label-danger\">Cancelled</span>"
+			else
+			  @departure_flight_status = "<span class=\"label label-primary\">Not Found</span>"
+			end
 
 			# For the risk preference, calculate the time required prior to boarding to be at the airport
 			# For international flights (High Risk: T-90min, Medium: T-120min, Low: T-180min)
@@ -141,12 +151,12 @@ class ApplicationController < ActionController::Base
 				end
 			else 
 			# Domestic flight
-				if has_baggage
-					if risk_profile == "High"
-						checkin_time = @departure_flight_datetime - Rational(1200, 86400)
-					elsif risk_profile == "Medium"
-						checkin_time = @departure_flight_datetime - Rational(2700, 86400)
-					else
+			if has_baggage
+				if risk_profile == "High"
+					checkin_time = @departure_flight_datetime - Rational(1200, 86400)
+				elsif risk_profile == "Medium"
+					checkin_time = @departure_flight_datetime - Rational(2700, 86400)
+				else
 						#Low Risk
 						checkin_time = @departure_flight_datetime - Rational(3600, 86400)
 					end
@@ -191,6 +201,8 @@ class ApplicationController < ActionController::Base
 		else
 			# Request is good
 			@departure_time = arrival_time.to_i - directions_json["routes"].first["legs"].first["duration"]["value"]
+			@departure_time = DateTime.strptime(@departure_time.to_s,'%s')
+			@arrival_time = DateTime.strptime(@arrival_time.to_s,'%s')
 			# Print out the departure time
 			# puts "By #{commute_mode}: You need to leave at #{DateTime.strptime(departure_time.to_s,'%s')} in order to check-in at #{departure_airport_name} by #{DateTime.strptime(arrival_time.to_s,'%s')}"
 			# Print out the directions

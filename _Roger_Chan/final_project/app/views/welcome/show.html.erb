@@ -1,0 +1,76 @@
+<%= render 'error'%>
+
+<div style='margin:30px;'>
+<% if @has_flightstatus_error %>
+	<!-- Display nothing -->
+
+<% else %>
+<!-- Display map only if Google Directions finds a result -->
+	<% if @has_directions_error == false %>
+
+		<table class="table table-condensed">
+			<tr>
+				<th>Flight Number</th>
+				<th>Departure Airport</th> 
+				<th>Departure Time</th>
+				<th>Status</th>
+			</tr>
+			<tr>
+				<td><%= @flight_code %></td>
+				<td><%= @departure_airport_name %></td> 
+				<td><%= @departure_flight_datetime.strftime('%a %e %b %I:%M%p') %></td>
+				<td><%= raw @departure_flight_status %></td> 
+			</tr>
+		</table>
+
+		<!-- Display leave-by message -->
+		<p> 
+			<%= "By #{@commute_mode}: You need to leave at  in order to check-in at #{@departure_airport_name} by #{@arrival_time.strftime('%a %e %b %I:%M%p')} for Flight #{@flight_code} at #{@departure_flight_datetime.strftime('%a %e %b %I:%M%p')}" %> 
+		</p>
+
+		<!-- Countdown Timer -->
+		<h5 id="countdown-holder"></h5>
+		Depart to airport in: (By <%= @commute_mode %>) 
+		<script src="/js/countdown.js"></script>
+		<script>  
+		var clock = document.getElementById("countdown-holder"), targetDate = new Date(<%= @departure_time.strftime('%Y') %>, <%= @departure_time.strftime('%m') %> - 1, <%= @departure_time.strftime('%d') %>); 
+		  		// Jan 1, 2050  
+		  		clock.innerHTML = countdown(targetDate).toString();
+		  		clock.innerHTML = countdown(targetDate).toString();
+		  		setInterval(function()
+		  		{  
+		  			clock.innerHTML = countdown(targetDate).toString();  
+		  		}, 1000); 
+		</script>
+		<p> Arrive at airport by: <%= "#{@departure_time.strftime('%a %e %b %I:%M%p')}" %> </p>
+		</br>
+
+		<h3>Directions and Map </h3>
+		<script type="text/javascript">
+			var window_width = $(window).width()
+			document.write('<iframe width='+window_width+' height="450" frameborder="0" style="border:0" src= <%= @gmaps_url %>> </iframe>');
+		</script>
+
+	</br>
+	</br>
+			<ol>
+				<% @directions.each_with_index do |steps, index| %>
+				<li> <%= raw steps["html_instructions"] %> 
+					<%= "[Distance: #{steps["distance"]["text"]}, " %>
+					<%= "duration: #{steps["duration"]["text"]}]" %></li>
+				<% end %>
+			</ol>
+	 <%else%>
+	  	<!-- Otherwise -->
+	<%end%>
+<%end%>
+
+<script>
+function goBack() {
+    window.history.back()
+}
+</script>
+
+<button onclick="goBack()" type="button" class="btn btn-default">Go Back
+</button>
+</div>

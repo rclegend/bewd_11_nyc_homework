@@ -8,34 +8,39 @@
 </head>
 <body>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
 
-<%= nav_bar :fixed => :top, :brand => "FinalBoardingCall", :responsive => true do %>
-    <%= menu_group :pull => :left do %>
-        <%= menu_item "Home", root_path %>
-        <% if user_signed_in? %>
-          <%= menu_divider %>
-          <%= menu_item "Show All Flights", flights_path %>
-        <%end%>
-    <% end %>
-    <%= menu_group :pull => :right do %>
-        <% if user_signed_in? %>
-            <%= menu_text "#{current_user.email}" %>
-            <%= menu_item "Edit Profile", edit_user_registration_path %>
-            <%= menu_item "Log Out", destroy_user_session_path, method: :delete %>
-        <% else %>
-            <%= menu_item "Sign Up", new_user_registration_path %>
-            <%= menu_item "Login", new_user_session_path %>
-        <% end %>
-    <% end %>
-<% end %>
+  <%= nav_bar :fixed => :top, :brand => "FinalBoardingCall", :responsive => true do %>
+  <%= menu_group :pull => :left do %>
+  <%= menu_item "Home", root_path %>
+  <% if user_signed_in? %>
+  <%= menu_divider %>
+  <%= menu_item "Flights", flights_path %>
+  <%end%>
+  <% end %>
+  <%= menu_group :pull => :right do %>
+  <% if user_signed_in? %>
+  <%= menu_text "#{current_user.email}" %>
+  <%= menu_item "Edit Profile", edit_user_registration_path %>
+  <%= menu_item "Log Out", destroy_user_session_path, method: :delete %>
+  <% else %>
+  <%= menu_item "Sign Up", new_user_registration_path %>
+  <%= menu_item "Login", new_user_session_path %>
+  <% end %>
+  <% end %>
+  <% end %>
 
-<%= bootstrap_flash %>
 
-<%= yield %>
+
+  <%= yield %>
+
+  </br>
+  <%= nav_bar :static => :bottom, :responsive => true do %>
+  <p class="navbar-text navbar-right">Powered by RCLEGEND Studios 2014</p>
+  <% end %>
 
 </body>
 </html>
