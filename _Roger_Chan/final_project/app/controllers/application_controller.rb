@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   	require 'date'
   	require "erb"
   	include ERB::Util
+  	require 'open-uri'
 
   	def index
   	end
@@ -46,7 +47,7 @@ class ApplicationController < ActionController::Base
 		departure_airport_code = params[:departure_airport_code]
 
 		# Origin Location
-		@origin_location = url_encode(params[:origin_location])
+		@origin_location = params[:origin_location]
 
 		# Commute Mode
 		@commute_mode = params[:commute_mode]
@@ -180,19 +181,19 @@ class ApplicationController < ActionController::Base
 	def get_directions(commute_mode,arrival_time,origin_location,departure_airport_name)
 
 		# Load directions from Google API
-		directions_url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin_location}&destination=#{departure_airport_name}&arrival_time=#{arrival_time}&mode=#{commute_mode}&key=AIzaSyA7KOsivxHiRaAOhXcRod0ol87SMBrGRyQ"
-		encoded_dir_url = URI.encode(directions_url)
-		URI.parse(encoded_dir_url)
-		directions_client = RestClient.get(encoded_dir_url)
+		directions_url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{url_encode(origin_location)}&destination=#{url_encode(departure_airport_name)}&arrival_time=#{arrival_time}&mode=#{commute_mode}&key=AIzaSyA7KOsivxHiRaAOhXcRod0ol87SMBrGRyQ".force_encoding('ASCII-8BIT')
+		# @encoded_dir_url = URI.encode(directions_url.strip)
+		# @encoded_dir_url= URI.parse(@encoded_dir_url)
+		# encoded_dir_url = URI::encode(directions_url)
+		directions_client = RestClient.get(directions_url)
 		directions_json = JSON.load(directions_client)
-		@url2 = directions_url
 
 		# Error flags
 		@has_directions_error = false
 		@directions_error_msg = ""
 
 		# Google Maps URL
-		@gmaps_url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyA7KOsivxHiRaAOhXcRod0ol87SMBrGRyQ&origin=#{origin_location}&destination=#{url_encode(departure_airport_name)}&mode=#{commute_mode}"
+		@gmaps_url = "https://www.google.com/maps/embed/v1/directions?key=AIzaSyA7KOsivxHiRaAOhXcRod0ol87SMBrGRyQ&origin=#{url_encode(origin_location)}&destination=#{url_encode(departure_airport_name)}&mode=#{commute_mode}"
 
 		# Check if request is bad
 		if directions_json["status"] != "OK"

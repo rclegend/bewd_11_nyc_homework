@@ -12,7 +12,7 @@ require 'json'
 require 'rest-client'
 require_relative 'shopping_cart'
 require_relative 'item'
-json_url = ""
+@json_url = ""
 
 # Clear the console
 system "clear"
@@ -63,6 +63,7 @@ def add_item_to_cart
 		# Displays the item
 		puts "(#{index+1}) Name: #{item.name} || Price: $#{item.price} || Shipping Cost: $#{item.shipping_cost}"
 	end
+	puts "(99) View more products in this category"
 	puts "-----------------------------------------------------------------------------------------"
 
 
@@ -75,7 +76,9 @@ def add_item_to_cart
 		if user_input == 0
 			# Invalid input
 			puts "You entered an invalid choice, please try again"
-		else
+		elsif user_input == 99
+			
+		elsif
 			# Valid input
 			valid_input = true
 			#Add the item to the cart
@@ -125,12 +128,12 @@ while keep_shopping
 	puts "LOADING..."
 
 	# Pull items from Best Buy JSON
-	bestbuy_client = RestClient.get(json_url)
-	bestbuy_json = JSON.load(bestbuy_client)
+	@bestbuy_client = RestClient.get(json_url)
+	@bestbuy_json = JSON.load(bestbuy_client)
 	system "clear"
 
 	# Parse the JSON client for products and make an object
-	bestbuy_json["products"].each do |product|
+	@bestbuy_json["products"].each do |product|
 		sku = product["sku"]
 		name = product["name"]
 		price = product["regularPrice"]
